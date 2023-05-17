@@ -23,7 +23,7 @@ const Navigation = () => {
 		</>
 	);
 	return (
-		<div className='navbar items-center px-6 md:px-24'>
+		<div className='navbar items-center px-6 md:px-24 py-6'>
 			<div className='navbar-start justify-between items-center flex w-full'>
 				<Link to='/' className='font-bold text-2xl lg:text-3xl text-[#48b4ad]'>
 					ToyVerse

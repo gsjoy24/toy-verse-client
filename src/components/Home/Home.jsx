@@ -1,6 +1,7 @@
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import Banner from './Banner';
+import CategoryTabs from './CategoryTab/CategoryTabs';
 import Gallery from './Gallery';
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
 			<Navigation />
 			<Banner />
 			<Gallery />
+			<CategoryTabs />
 			<Footer />
 		</div>
 	);

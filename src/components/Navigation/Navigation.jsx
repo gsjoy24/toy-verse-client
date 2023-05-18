@@ -23,7 +23,7 @@ const Navigation = () => {
 		</>
 	);
 	return (
-		<div className='navbar items-center px-6 md:px-24 py-6'>
+		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-10 w-full'>
 			<div className='navbar-start justify-between items-center flex w-full'>
 				<Link to='/' className='font-bold text-2xl lg:text-3xl text-[#48b4ad]'>
 					ToyVerse
@@ -41,7 +41,7 @@ const Navigation = () => {
 					</ul>
 				</div>
 			</div>
-			<div className='navbar-center hidden lg:flex'>
+			<div className='navbar-center hidden lg:flex text-sm'>
 				<ul className='menu menu-horizontal px-1 gap-3 font-semibold'>{navItems}</ul>
 			</div>
 		</div>

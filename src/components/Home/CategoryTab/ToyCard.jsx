@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaDollarSign, FaStar } from 'react-icons/fa';
 const ToyCard = ({ toy }) => {
-	console.log(toy);
 	return (
 		<div>
 			<div className='card max-w-[300px] bg-base-100 shadow-2xl mx-auto border mt-4'>

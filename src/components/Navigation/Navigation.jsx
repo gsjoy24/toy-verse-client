@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navigation = () => {
+	const { user } = useContext(AuthContext);
+	console.log(user);
 	const navItems = (
 		<>
 			<li>
@@ -28,11 +32,26 @@ const Navigation = () => {
 					Blogs
 				</NavLink>
 			</li>
-			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/register'>
-					Register
-				</NavLink>
-			</li>
+
+			{user ? (
+				<li>
+					<button className='active:bg-[#48b4ad]'>Logout</button>
+				</li>
+			) : (
+				<>
+					<li>
+						<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/register'>
+							Register
+						</NavLink>
+					</li>
+
+					<li>
+						<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/login'>
+							Login
+						</NavLink>
+					</li>
+				</>
+			)}
 		</>
 	);
 	return (

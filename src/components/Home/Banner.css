@@ -1,0 +1,4 @@
+.banner {
+	background-image: linear-gradient(rgb(38, 38, 38), rgb(37, 37, 37)), url('../../../src/assets/bg.png');
+   background-blend-mode: overlay;
+}

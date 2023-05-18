@@ -3,8 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navigation = () => {
-	const { user } = useContext(AuthContext);
+	const { user, logOutUser } = useContext(AuthContext);
 	console.log(user);
+
 	const navItems = (
 		<>
 			<li>
@@ -34,9 +35,19 @@ const Navigation = () => {
 			</li>
 
 			{user ? (
-				<li>
-					<button className='active:bg-[#48b4ad]'>Logout</button>
-				</li>
+				<>
+					<li>
+						<button onClick={logOutUser} className='active:bg-[#48b4ad]'>
+							Logout
+						</button>
+					</li>
+
+					<img
+						className='w-12 h-12 rounded-full shadow-md shadow-[#48b4ad]'
+						src={user?.photoURL}
+						alt={user?.displayName}
+					/>
+				</>
 			) : (
 				<>
 					<li>
@@ -55,7 +66,7 @@ const Navigation = () => {
 		</>
 	);
 	return (
-		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-10 w-full'>
+		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-10 w-full shadow-lg'>
 			<div className='navbar-start justify-between items-center flex w-full'>
 				<Link to='/' className='font-bold text-2xl lg:text-3xl text-[#48b4ad]'>
 					ToyVerse

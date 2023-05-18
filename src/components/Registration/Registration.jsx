@@ -26,6 +26,7 @@ const Registration = () => {
 
 		createUser(email, password)
 			.then((data) => {
+				// updating name and photo
 				setNameAndPhoto(name, photo)
 					.then(() => {})
 					.catch((err) => setErr(err.message));
@@ -49,7 +50,7 @@ const Registration = () => {
 					className='input w-full input-bordered '
 					required
 				/>
-				<p>{err}</p>
+				<p className='text-red-600 text-xs'>{err}</p>
 				<input
 					type='submit'
 					value='Register'

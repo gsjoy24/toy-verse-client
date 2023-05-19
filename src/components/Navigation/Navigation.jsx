@@ -18,16 +18,20 @@ const Navigation = () => {
 					All Toys
 				</NavLink>
 			</li>
-			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/my_toys'>
-					My Toys
-				</NavLink>
-			</li>
-			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/add_toy'>
-					Add A Toy
-				</NavLink>
-			</li>
+			{user && (
+				<>
+					<li>
+						<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/my_toys'>
+							My Toys
+						</NavLink>
+					</li>
+					<li>
+						<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/add_toy'>
+							Add A Toy
+						</NavLink>
+					</li>
+				</>
+			)}
 			<li>
 				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/blogs'>
 					Blogs
@@ -41,12 +45,14 @@ const Navigation = () => {
 							Logout
 						</button>
 					</li>
-
-					<img
-						className='w-12 h-12 rounded-full shadow-md shadow-[#48b4ad]'
-						src={user?.photoURL}
-						alt={user?.displayName}
-					/>
+					<div className='tooltip tooltip-bottom' data-tip={user?.displayName}>
+						{' '}
+						<img
+							className='w-12 h-12 rounded-full shadow-md shadow-[#48b4ad]'
+							src={user?.photoURL}
+							alt={user?.displayName}
+						/>
+					</div>
 				</>
 			) : (
 				<>
@@ -65,6 +71,7 @@ const Navigation = () => {
 			)}
 		</>
 	);
+
 	return (
 		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-50 w-full shadow-lg'>
 			<div className='navbar-start justify-between items-center flex w-full'>

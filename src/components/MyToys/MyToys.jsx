@@ -29,7 +29,7 @@ const MyToys = () => {
 							Swal.fire({
 								icon: 'success',
 								title: 'Deleted successfully!',
-								text: 'This toy is successfully removed!',
+								text: 'This toy has been successfully removed!',
 								showConfirmButton: false,
 								timer: 2000
 							});

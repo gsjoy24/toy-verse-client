@@ -50,10 +50,10 @@ const UpdateToy = () => {
 			showCancelButton: true,
 			confirmButtonColor: '#48b4ad',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes, delete it!'
+			confirmButtonText: 'Yes, update it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`https://toy-verse-server-iota.vercel.app/toys/toys/${_id}`, {
+				fetch(`https://toy-verse-server-iota.vercel.app/toys/${_id}`, {
 					method: 'PATCH',
 					headers: {
 						'content-type': 'application/json'
@@ -62,7 +62,23 @@ const UpdateToy = () => {
 				})
 					.then((res) => res.json())
 					.then((result) => {
-						// if()
+						if (result.modifiedCount > 0) {
+							Swal.fire({
+								icon: 'success',
+								title: 'Updated successfully!',
+								text: 'This toy has been successfully updated!',
+								showConfirmButton: false,
+								timer: 2000
+							});
+						} else {
+							Swal.fire({
+								icon: 'error',
+								title: 'failed to update!',
+								text: 'Something went wrong! Please try again!',
+								showConfirmButton: false,
+								timer: 3000
+							});
+						}
 					})
 					.catch((err) => setErr(err));
 			}

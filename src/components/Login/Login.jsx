@@ -8,7 +8,7 @@ const Login = () => {
 	const [err, setErr] = useState('');
 	const navigate = useNavigate();
 	const location = useLocation();
-	// const
+	const from = location.state?.from?.pathname || '/';
 
 	const handelLogin = (e) => {
 		setErr('');
@@ -18,14 +18,17 @@ const Login = () => {
 		const password = form.password.value;
 
 		loginWithEmail(email, password)
-			.then((data) => console.log(data.user))
+			.then(() => {
+				form.reset();
+				navigate(from);
+			})
 			.catch((err) => setErr(err.message));
 	};
 
 	const handleGoogleLogin = () => {
 		setErr('');
 		loginWithGoogle()
-			.then((data) => console.log(data.user))
+			.then(() => navigate(from))
 			.catch((err) => setErr(err.message));
 	};
 	return (

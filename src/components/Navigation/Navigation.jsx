@@ -14,17 +14,17 @@ const Navigation = () => {
 				</NavLink>
 			</li>
 			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/all-toys'>
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/all_toys'>
 					All Toys
 				</NavLink>
 			</li>
 			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/my-toys'>
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/my_toys'>
 					My Toys
 				</NavLink>
 			</li>
 			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/add-toy'>
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/add_toy'>
 					Add A Toy
 				</NavLink>
 			</li>

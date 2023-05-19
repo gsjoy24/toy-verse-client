@@ -6,6 +6,7 @@ import Layout from './Layout/Layout';
 import Registration from './components/Registration/Registration';
 import AuthProvider from './Contexts/AuthProvider';
 import Login from './components/Login/Login';
+import AddAToy from './components/AddAToy/AddAToy';
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
 			{
 				path: '/login',
 				element: <Login />
+			},
+			{
+				path: '/toys/:id',
+				element: <Login />
+			},
+			{
+				path: '/add_toy',
+				element: <AddAToy />
 			}
 		]
 	}

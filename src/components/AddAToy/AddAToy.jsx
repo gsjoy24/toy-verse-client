@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const AddAToy = () => {
+	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
 
 	const handleAddToy = (e) => {
@@ -9,8 +11,8 @@ const AddAToy = () => {
 		const form = e.target;
 		const toy_name = form.toy_name.value;
 		const toy_image = form.toy_image.value;
-		const seller_name = form.seller_name.value;
-		const seller_email = form.seller_email.value;
+		const seller_name = user.displayName;
+		const seller_email = user.email;
 		const sub_category = form.sub_category.value;
 		const available_quantity = form.quantity.value;
 		const price = form.price.value;
@@ -72,20 +74,14 @@ const AddAToy = () => {
 				{/* seller name */}
 				<input
 					type='text'
-					placeholder='Seller Name '
 					name='seller_name'
 					className='input w-full input-bordered '
-					required
+					value={user.displayName}
+					disabled
 				/>
 
 				{/* seller email */}
-				<input
-					type='email'
-					placeholder='Seller Email '
-					name='seller_email'
-					className='input w-full input-bordered '
-					required
-				/>
+				<input type='email' name='seller_email' value={user.email} className='input w-full input-bordered ' disabled />
 
 				{/* sub category and quantity */}
 				<div className='grid grid-cols-2 gap-3'>

@@ -8,7 +8,8 @@ import AuthProvider from './Contexts/AuthProvider';
 import Login from './components/Login/Login';
 import AddAToy from './components/AddAToy/AddAToy';
 import MyToys from './components/MyToys/MyToys';
-import PrivateRoute from './components/PivateRoute/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import UpdateToy from './components/UpdateToy/UpdateToy';
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
 				path: '/login',
 				element: <Login />
 			},
+
 			{
 				path: '/add_toy',
 				element: (
@@ -42,6 +44,15 @@ const router = createBrowserRouter([
 						<MyToys />
 					</PrivateRoute>
 				)
+			},
+			{
+				path: '/update/:id',
+				element: (
+					<PrivateRoute>
+						<UpdateToy />
+					</PrivateRoute>
+				),
+				loader: ({ params }) => fetch(`https://toy-verse-server-iota.vercel.app/toys/${params.id}`)
 			}
 		]
 	}

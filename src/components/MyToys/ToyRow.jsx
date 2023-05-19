@@ -1,4 +1,5 @@
 import { FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ToyRow = ({ toy, serial, handleDelete }) => {
 	const { _id, toy_name, toy_image, sub_category, price, rating, available_quantity } = toy;
@@ -29,7 +30,9 @@ const ToyRow = ({ toy, serial, handleDelete }) => {
 			<td>{available_quantity}</td>
 
 			<th className='flex flex-col gap-3'>
-				<button className='btn bg-[#48b4ad] border-0 btn-xs'>Update</button>
+				<Link className='btn bg-[#48b4ad] border-0 btn-xs' to={`/update/${_id}`}>
+					Update
+				</Link>
 				<button onClick={() => handleDelete(_id)} className='btn bg-[#48b4ad] border-0 btn-xs'>
 					<FaTrash />
 				</button>

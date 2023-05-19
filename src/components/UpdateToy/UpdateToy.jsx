@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
-const AddAToy = () => {
+const UpdateToy = () => {
+	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
 
 	const handleAddToy = (e) => {
@@ -9,8 +11,6 @@ const AddAToy = () => {
 		const form = e.target;
 		const toy_name = form.toy_name.value;
 		const toy_image = form.toy_image.value;
-		const seller_name = form.seller_name.value;
-		const seller_email = form.seller_email.value;
 		const sub_category = form.sub_category.value;
 		const available_quantity = form.quantity.value;
 		const price = form.price.value;
@@ -20,8 +20,6 @@ const AddAToy = () => {
 		const toy = {
 			toy_name,
 			toy_image,
-			seller_name,
-			seller_email,
 			sub_category,
 			available_quantity,
 			price,
@@ -52,7 +50,6 @@ const AddAToy = () => {
 			.then((result) => console.log(result))
 			.catch((err) => setErr(err));
 	};
-
 	return (
 		<div className='min-h-[85vh] flex flex-col justify-center items-center p-5'>
 			<h1 className='text-3xl font-extrabold uppercase mb-4 text-gray-800'>Add a new toy</h1>
@@ -129,4 +126,4 @@ const AddAToy = () => {
 	);
 };
 
-export default AddAToy;
+export default UpdateToy;

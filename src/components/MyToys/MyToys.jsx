@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ToyRow from './ToyRow';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const MyToys = () => {
+	const { user } = useContext(AuthContext);
 	const [toys, setToys] = useState([]);
 	const [reload, setReload] = useState(true);
 
@@ -17,7 +19,7 @@ const MyToys = () => {
 			confirmButtonText: 'Yes, delete it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/toys/${id}`, {
+				fetch(`https://toy-verse-server-iota.vercel.app/toys/${id}`, {
 					method: 'DELETE'
 				})
 					.then((res) => res.json())
@@ -47,10 +49,10 @@ const MyToys = () => {
 	};
 
 	useEffect(() => {
-		fetch(`https://toy-verse-server-iota.vercel.app/toys?seller_email=${`text@g.com`}`)
+		fetch(`https://toy-verse-server-iota.vercel.app/toys?seller_email=${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setToys(data));
-	}, [reload]);
+	}, [reload, user]);
 
 	const tableHeadings = (
 		<tr className='text-center'>

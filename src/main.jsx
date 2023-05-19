@@ -8,6 +8,7 @@ import AuthProvider from './Contexts/AuthProvider';
 import Login from './components/Login/Login';
 import AddAToy from './components/AddAToy/AddAToy';
 import MyToys from './components/MyToys/MyToys';
+import PrivateRoute from './components/PivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
 	{
@@ -27,16 +28,20 @@ const router = createBrowserRouter([
 				element: <Login />
 			},
 			{
-				path: '/toys/:id',
-				element: <Login />
-			},
-			{
 				path: '/add_toy',
-				element: <AddAToy />
+				element: (
+					<PrivateRoute>
+						<AddAToy />
+					</PrivateRoute>
+				)
 			},
 			{
 				path: '/my_toys',
-				element: <MyToys />
+				element: (
+					<PrivateRoute>
+						<MyToys />
+					</PrivateRoute>
+				)
 			}
 		]
 	}

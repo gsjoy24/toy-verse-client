@@ -1,9 +1,11 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateToy = () => {
-	const { toy_name, toy_image, price, rating,sub_category, available_quantity, detail_description } = useLoaderData();
+	const { _id, toy_name, toy_image, price, rating, sub_category, available_quantity, detail_description } =
+		useLoaderData();
 	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
 
@@ -41,17 +43,32 @@ const UpdateToy = () => {
 			return;
 		}
 
-		fetch('https://toy-verse-server-iota.vercel.app/toys', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify(toy)
-		})
-			.then((res) => res.json())
-			.then((result) => console.log(result))
-			.catch((err) => setErr(err));
+		Swal.fire({
+			title: 'Do you really want to update?',
+			text: "You won't be able to revert this!",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#48b4ad',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`https://toy-verse-server-iota.vercel.app/toys/toys/${_id}`, {
+					method: 'PATCH',
+					headers: {
+						'content-type': 'application/json'
+					},
+					body: JSON.stringify(toy)
+				})
+					.then((res) => res.json())
+					.then((result) => {
+						// if()
+					})
+					.catch((err) => setErr(err));
+			}
+		});
 	};
+
 	return (
 		<div className='min-h-[85vh] flex flex-col justify-center items-center p-5'>
 			<h1 className='text-3xl font-extrabold uppercase mb-4 text-gray-800'>Update toy : {toy_name}</h1>
@@ -63,7 +80,7 @@ const UpdateToy = () => {
 				<input
 					type='text'
 					placeholder='Toy Name'
-					value={toy_name}
+					defaultValue={toy_name}
 					name='toy_name'
 					className='input w-full input-bordered mb-4'
 					required
@@ -77,7 +94,7 @@ const UpdateToy = () => {
 					type='text'
 					placeholder='Toy Image URL '
 					name='toy_image'
-					value={toy_image}
+					defaultValue={toy_image}
 					className='input w-full input-bordered mb-4 '
 					required
 				/>
@@ -90,7 +107,7 @@ const UpdateToy = () => {
 					type='text'
 					name='seller_name'
 					className='input w-full input-bordered mb-4 '
-					value={user?.displayName}
+					defaultValue={user?.displayName}
 					disabled
 				/>
 
@@ -101,7 +118,7 @@ const UpdateToy = () => {
 				<input
 					type='email'
 					name='seller_email'
-					value={user?.email}
+					defaultValue={user?.email}
 					className='input w-full input-bordered mb-4 '
 					disabled
 				/>
@@ -113,7 +130,7 @@ const UpdateToy = () => {
 							<span className='label-text text-xs'>Subcategory :</span>
 						</label>
 						<select name='sub_category' defaultValue={sub_category} className='select select-bordered w-full required'>
-							<option disabled value='default'>
+							<option disabled defaultValue='default'>
 								Subcategory
 							</option>
 							<option value='Marvel_Universe'>Marvel Universe</option>
@@ -130,7 +147,7 @@ const UpdateToy = () => {
 							type='number'
 							placeholder='Available Quantity '
 							name='quantity'
-							value={available_quantity}
+							defaultValue={available_quantity}
 							className='input w-full input-bordered mb-4 '
 							required
 						/>
@@ -146,7 +163,7 @@ const UpdateToy = () => {
 						<input
 							type='number'
 							placeholder='$ Price'
-							value={price}
+							defaultValue={price}
 							name='price'
 							className='input w-full input-bordered mb-4 '
 							required
@@ -160,7 +177,7 @@ const UpdateToy = () => {
 						<input
 							type='number'
 							placeholder='Ratings'
-							value={rating}
+							defaultValue={rating}
 							name='rating'
 							className='input w-full input-bordered mb-4 '
 							required
@@ -173,8 +190,7 @@ const UpdateToy = () => {
 				<textarea
 					className='textarea textarea-bordered'
 					name='detail_description'
-					value={detail_description}
-					placeholder='Description'
+					defaultValue={detail_description}
 					required></textarea>
 
 				<p className='text-red-600 text-xs'>{err}</p>

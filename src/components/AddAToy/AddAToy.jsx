@@ -16,6 +16,7 @@ const AddAToy = () => {
 		const price = form.price.value;
 		const rating = form.rating.value;
 		const detail_description = form.detail_description.value;
+
 		const toy = {
 			toy_name,
 			toy_image,
@@ -28,11 +29,18 @@ const AddAToy = () => {
 			detail_description
 		};
 
+		// validating sub category, rating and price
 		if (sub_category === 'default') {
 			setErr('please select a category!');
 			return;
+		} else if (rating > 5) {
+			setErr(`rating can't be more than 5 stars!`);
+			return;
+		} else if (price <= 0) {
+			setErr(`price amount must be greater than zero!`);
+			return;
 		}
-		
+
 		fetch('http://localhost:5000/toys', {
 			method: 'POST',
 			headers: {
@@ -113,7 +121,7 @@ const AddAToy = () => {
 				<p className='text-red-600 text-xs'>{err}</p>
 				<input
 					type='submit'
-					value='Login'
+					value='Add Toy'
 					className='btn input w-full input-bordered bg-[#48b4ad] font-semibold text-white border-0'
 				/>
 			</form>

@@ -4,7 +4,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navigation = () => {
 	const { user, logOutUser } = useContext(AuthContext);
-	console.log(user);
+	// console.log(user);
 
 	const navItems = (
 		<>
@@ -66,7 +66,7 @@ const Navigation = () => {
 		</>
 	);
 	return (
-		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-10 w-full shadow-lg'>
+		<div className='navbar items-center px-6 md:px-24 py-3 sticky bg-white top-0 right-0 z-50 w-full shadow-lg'>
 			<div className='navbar-start justify-between items-center flex w-full'>
 				<Link to='/' className='font-bold text-2xl lg:text-3xl text-[#48b4ad]'>
 					ToyVerse

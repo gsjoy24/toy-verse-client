@@ -3,7 +3,7 @@ import { GiSupersonicBullet } from 'react-icons/gi';
 
 const Features = () => {
 	return (
-		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center py-16 bg-slate-100 gap-4'>
+		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center py-16 bg-slate-100 gap-4 mb-12'>
 			<div>
 				<div className='flex flex-col justify-center items-center max-w-[270px] text-center gap-2 p-4 mx-auto'>
 					<FaClock className='text-5xl' />

@@ -5,10 +5,9 @@ import { useState } from 'react';
 const AllToys = () => {
 	const [toys, setToys] = useState([]);
 	const [searchName, setSearchName] = useState('');
-	console.log(searchName);
 
 	const url = searchName
-		? `http://toy-verse-server-iota.vercel.app/search_toys/${searchName}`
+		? `https://toy-verse-server-iota.vercel.app/search_toys/${searchName}`
 		: 'https://toy-verse-server-iota.vercel.app/toys';
 
 	const handleSearch = (e) => {
@@ -20,7 +19,9 @@ const AllToys = () => {
 		// scroll to top
 		window.scrollTo(0, 0);
 		document.title = 'All Toy | ToyVerse';
+	}, []);
 
+	useEffect(() => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setToys(data));

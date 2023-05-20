@@ -54,9 +54,12 @@ const MyToys = () => {
 	};
 
 	useEffect(() => {
-		// scroll to top of page
+		// scroll to top
 		window.scrollTo(0, 0);
 		document.title = 'My Toys | ToyVerse';
+	}, []);
+
+	useEffect(() => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setToys(data));

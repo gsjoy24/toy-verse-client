@@ -53,9 +53,9 @@ const ToyDetail = () => {
 						<p>
 							<span className='font-bold'>Email :</span> {seller_email}
 						</p>
-						<p className='font-bold mt-2'>Description: </p>
-                  <p className='text-justify'>{detail_description}</p>
-                  <button className="btn bg-[#48b4ad] border-0 my-4 btn-block">add to cart</button>
+						<p className='font-bold mt-2'>Toy Description: </p>
+						<p className='text-justify'>{detail_description}</p>
+						<button className='btn bg-[#48b4ad] border-0 my-4 btn-block'>add to cart</button>
 					</div>
 				</div>
 			</div>

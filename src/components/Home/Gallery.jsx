@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import img1 from '../../../src/assets/gallery/1.png';
 import img2 from '../../../src/assets/gallery/2.png';
 import img3 from '../../../src/assets/gallery/3.png';
@@ -7,7 +8,13 @@ import img6 from '../../../src/assets/gallery/6.png';
 import img7 from '../../../src/assets/gallery/7.png';
 import img8 from '../../../src/assets/gallery/8.png';
 import img9 from '../../../src/assets/gallery/9.png';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const Gallery = () => {
+	useEffect(() => {
+		Aos.init({});
+	}, []);
+
 	return (
 		<div className='my-12'>
 			<div className='text-center max-w-lg mx-auto px-5 mb-12'>
@@ -16,16 +23,16 @@ const Gallery = () => {
 					Get a Glimpse of our Upcoming Collection - Unleash Excitement with Exclusive Toy Previews!
 				</p>
 			</div>
-			<div className='flex flex-wrap gap-6 justify-center items-center max-w-6xl px-8 mx-auto'>
-				<img className='h-44 shadow-xl rounded-lg' src={img2} alt='' />
+			<div data-aos='fade-up' className='flex flex-wrap gap-6 justify-center items-center max-w-6xl px-8 mx-auto'>
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img2} alt='' />
 				<img className='h-44 shadow-xl rounded-lg' src={img3} alt='' />
-				<img className='h-44 shadow-xl rounded-lg' src={img7} alt='' />
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img7} alt='' />
 				<img className='h-44 shadow-xl rounded-lg' src={img4} alt='' />
-				<img className='h-44 shadow-xl rounded-lg' src={img5} alt='' />
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img5} alt='' />
 				<img className='h-44 shadow-xl rounded-lg' src={img1} alt='' />
-				<img className='h-44 shadow-xl rounded-lg' src={img8} alt='' />
-				<img className='h-44 shadow-xl rounded-lg' src={img6} alt='' />
-				<img className='h-44 shadow-xl rounded-lg' src={img9} alt='' />
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img8} alt='' />
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img6} alt='' />
+				<img data-aos='flip-left' className='h-44 shadow-xl rounded-lg' src={img9} alt='' />
 			</div>
 		</div>
 	);

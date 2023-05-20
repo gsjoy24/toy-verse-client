@@ -7,6 +7,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 const ToyCard = ({ toy }) => {
 	const { user } = useContext(AuthContext);
+
 	useEffect(() => {
 		Aos.init({});
 	}, []);

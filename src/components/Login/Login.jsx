@@ -1,9 +1,13 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../../../src/assets/google.png';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { useState } from 'react';
 const Login = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+	}, []);
 	const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
 	const [err, setErr] = useState('');
 	const navigate = useNavigate();

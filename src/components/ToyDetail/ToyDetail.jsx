@@ -1,10 +1,15 @@
 import { FaDollarSign } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { Rating, ThinStar } from '@smastrom/react-rating';
-
 import '@smastrom/react-rating/style.css';
+import { useEffect } from 'react';
 
 const ToyDetail = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+	}, []);
+
 	const {
 		toy_name,
 		toy_image,

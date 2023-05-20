@@ -9,9 +9,12 @@ const AllToys = () => {
 
 	const url = searchName
 		? `http://toy-verse-server-iota.vercel.app/search_toys/${searchName}`
-		: 'https://toy-verse-server-iota.vercel.app/toys/';
+		: 'http://localhost:5000/toys';
 
 	useEffect(() => {
+		// scroll to top
+		window.scrollTo(0, 0);
+
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setToys(data));

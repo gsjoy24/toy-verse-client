@@ -1,9 +1,15 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddAToy = () => {
 	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
+
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+	}, []);
 
 	const handleAddToy = (e) => {
 		setErr('');
@@ -15,8 +21,8 @@ const AddAToy = () => {
 		const seller_email = user.email;
 		const sub_category = form.sub_category.value;
 		const available_quantity = form.quantity.value;
-		const price = form.price.value;
-		const rating = form.rating.value;
+		const price = parseFloat(form.price.value);
+		const rating = parseFloat(form.rating.value);
 		const detail_description = form.detail_description.value;
 
 		const toy = {
@@ -43,7 +49,7 @@ const AddAToy = () => {
 			return;
 		}
 
-		fetch('https://toy-verse-server-iota.vercel.app/toys', {
+		fetch('http://localhost:5000/toys', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'
@@ -51,7 +57,25 @@ const AddAToy = () => {
 			body: JSON.stringify(toy)
 		})
 			.then((res) => res.json())
-			.then((result) => console.log(result))
+			.then((result) => {
+				if (result?.acknowledged) {
+					Swal.fire({
+						icon: 'success',
+						title: 'added successfully!',
+						text: 'This toy has been successfully added!',
+						showConfirmButton: false,
+						timer: 2000
+					});
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'failed to add!',
+						text: 'Something went wrong! Please try again!',
+						showConfirmButton: false,
+						timer: 3000
+					});
+				}
+			})
 			.catch((err) => setErr(err));
 	};
 
@@ -106,7 +130,7 @@ const AddAToy = () => {
 				{/* price and ratings */}
 				<div className='flex gap-3'>
 					<input type='number' placeholder='$ Price ' name='price' className='input w-full input-bordered ' required />
-					<input type='number' placeholder='Ratings ' name='rating' className='input w-full input-bordered ' required />
+					<input type='text' placeholder='Ratings ' name='rating' className='input w-full input-bordered ' required />
 				</div>
 				<textarea
 					className='textarea textarea-bordered'

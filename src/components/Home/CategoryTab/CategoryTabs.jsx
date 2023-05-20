@@ -9,7 +9,7 @@ const CategoryTabs = () => {
 
 	useEffect(() => {
 		setToys([]);
-		fetch(`https://toy-verse-server-iota.vercel.app/toys?sub_category=${category}`)
+		fetch(`http://localhost:5000/toys?sub_category=${category}`)
 			.then((res) => res.json())
 			.then((data) => setToys(data));
 	}, [category]);

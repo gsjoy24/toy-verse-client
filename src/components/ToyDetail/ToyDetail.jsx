@@ -8,6 +8,7 @@ const ToyDetail = () => {
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
+		document.title = 'Product | ToyVerse';
 	}, []);
 
 	const {

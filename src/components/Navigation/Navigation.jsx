@@ -33,8 +33,8 @@ const Navigation = () => {
 				</>
 			)}
 			<li>
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/blogs'>
-					Blogs
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#48b4ad] text-white' : '')} to='/blog'>
+					Blog
 				</NavLink>
 			</li>
 

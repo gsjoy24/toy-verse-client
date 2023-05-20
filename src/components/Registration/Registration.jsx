@@ -8,6 +8,7 @@ const Registration = () => {
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
+		document.title = 'Register | ToyVerse';
 	}, []);
 	const { loginWithGoogle, createUser, setNameAndPhoto } = useContext(AuthContext);
 	const [err, setErr] = useState('');

@@ -11,9 +11,15 @@ const AllToys = () => {
 		? `http://toy-verse-server-iota.vercel.app/search_toys/${searchName}`
 		: 'http://localhost:5000/toys';
 
+	const handleSearch = (e) => {
+		e.preventDefault();
+		setSearchName(e.target.name.value);
+	};
+
 	useEffect(() => {
 		// scroll to top
 		window.scrollTo(0, 0);
+		document.title = 'All Toy | ToyVerse';
 
 		fetch(url)
 			.then((res) => res.json())
@@ -38,7 +44,9 @@ const AllToys = () => {
 		<div className='overflow-x-auto'>
 			<div className='py-8'>
 				<h2 className='text-3xl font-bold uppercase text-center mt-5 '>Toys from all sellers</h2>
-				<form className='flex justify-center items-center gap-1 mt-12 relative max-w-xl mx-auto border rounded-lg'>
+				<form
+					onSubmit={handleSearch}
+					className='flex justify-center items-center gap-1 mt-12 relative max-w-xl mx-auto border rounded-lg'>
 					<input
 						type='text'
 						onChange={(e) => setSearchName(e.target.value)}

@@ -7,8 +7,9 @@ const AddAToy = () => {
 	const [err, setErr] = useState('');
 
 	useEffect(() => {
-		// scroll to top of page
+		// scroll to top of page andd set page title
 		window.scrollTo(0, 0);
+		document.title = 'Add Toy | ToyVerse';
 	}, []);
 
 	const handleAddToy = (e) => {

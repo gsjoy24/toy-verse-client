@@ -7,6 +7,7 @@ const Login = () => {
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
+		document.title = 'Login | ToyVerse';
 	}, []);
 	const { loginWithGoogle, loginWithEmail } = useContext(AuthContext);
 	const [err, setErr] = useState('');

@@ -53,7 +53,7 @@ const UpdateToy = () => {
 			confirmButtonText: 'Yes, update it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/toys/${_id}`, {
+				fetch(`https://toy-verse-server-iota.vercel.app/toys/${_id}`, {
 					method: 'PATCH',
 					headers: {
 						'content-type': 'application/json'

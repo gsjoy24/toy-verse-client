@@ -9,8 +9,8 @@ const MyToys = () => {
 	const [toys, setToys] = useState([]);
 	const [reload, setReload] = useState(true);
 	const url = sort
-		? `http://localhost:5000/toys/${user.email}/sort?type=${sort}`
-		: `http://localhost:5000/toys?seller_email=${user.email}`;
+		? `https://toy-verse-server-iota.vercel.app/toys/${user.email}/sort?type=${sort}`
+		: `https://toy-verse-server-iota.vercel.app/toys?seller_email=${user.email}`;
 
 	console.log(sort);
 	const handleDelete = (id) => {
@@ -24,7 +24,7 @@ const MyToys = () => {
 			confirmButtonText: 'Yes, delete it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/toys/${id}`, {
+				fetch(`https://toy-verse-server-iota.vercel.app/toys/${id}`, {
 					method: 'DELETE'
 				})
 					.then((res) => res.json())
@@ -78,16 +78,20 @@ const MyToys = () => {
 
 	return (
 		<div className='max-w-5xl mx-auto mb-12'>
-			<h1 className='text-2xl md:text-4xl font-extrabold my-14 text-center uppercase'>All toys added by you</h1>
-			<div className='flex justify-end mb-4'>
-				<select onChange={(e) => setSort(e.target.value)} className='select select-bordered w-full max-w-[200px]'>
-					<option disabled selected>
-						Sort By Price
-					</option>
-					<option value='ascending'>Ascending</option>
-					<option value='descending'>Descending</option>
-				</select>
-			</div>
+			{toys.length && (
+				<h1 className='text-2xl md:text-4xl font-extrabold my-14 text-center uppercase'>All toys added by you</h1>
+			)}
+			{toys.length && (
+				<div className='flex justify-end mb-4'>
+					<select onChange={(e) => setSort(e.target.value)} className='select select-bordered w-full max-w-[200px]'>
+						<option disabled selected>
+							Sort By Price
+						</option>
+						<option value='ascending'>Ascending</option>
+						<option value='descending'>Descending</option>
+					</select>
+				</div>
+			)}
 			<div className='overflow-x-auto w-full'>
 				{toys.length ? (
 					<table className='table w-full'>
@@ -102,7 +106,7 @@ const MyToys = () => {
 						<tfoot>{tableHeadings}</tfoot>
 					</table>
 				) : (
-					<h1 className='my-40 text-center text-3xl font-bold'>No data found!</h1>
+					<h1 className='my-44 text-center text-3xl font-bold'>No data found!</h1>
 				)}
 			</div>
 		</div>

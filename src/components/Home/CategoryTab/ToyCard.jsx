@@ -16,7 +16,7 @@ const ToyCard = ({ toy }) => {
 		if (!user) {
 			Swal.fire({
 				icon: 'info',
-				title: 'You have to log in first to view details!',
+				title: 'You must be loged in to view details!',
 				showConfirmButton: false,
 				timer: 2000
 			});

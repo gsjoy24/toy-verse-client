@@ -50,7 +50,7 @@ const AddAToy = () => {
 			return;
 		}
 
-		fetch('http://localhost:5000/toys', {
+		fetch('https://toy-verse-server-iota.vercel.app/toys', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

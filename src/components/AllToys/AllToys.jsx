@@ -9,7 +9,7 @@ const AllToys = () => {
 
 	const url = searchName
 		? `http://toy-verse-server-iota.vercel.app/search_toys/${searchName}`
-		: 'http://localhost:5000/toys';
+		: 'https://toy-verse-server-iota.vercel.app/toys';
 
 	const handleSearch = (e) => {
 		e.preventDefault();

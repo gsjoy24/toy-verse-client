@@ -9,6 +9,7 @@ import AddAToy from '../components/AddAToy/AddAToy';
 import MyToys from '../components/MyToys/MyToys';
 import UpdateToy from '../components/UpdateToy/UpdateToy';
 import AllToys from '../components/AllToys/AllToys';
+import ToyDetail from '../components/ToyDetail/ToyDetail';
 
 const router = createBrowserRouter([
 	{
@@ -30,10 +31,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/all_toys',
-				element: <AllToys />,
-				loader: () => fetch('https://toy-verse-server-iota.vercel.app/toys/')
+				element: <AllToys />
 			},
-
 			{
 				path: '/add_toy',
 				element: (
@@ -55,6 +54,15 @@ const router = createBrowserRouter([
 				element: (
 					<PrivateRoute>
 						<UpdateToy />
+					</PrivateRoute>
+				),
+				loader: ({ params }) => fetch(`https://toy-verse-server-iota.vercel.app/toys/${params.id}`)
+			},
+			{
+				path: '/toys/:id',
+				element: (
+					<PrivateRoute>
+						<ToyDetail />
 					</PrivateRoute>
 				),
 				loader: ({ params }) => fetch(`https://toy-verse-server-iota.vercel.app/toys/${params.id}`)

@@ -1,7 +1,8 @@
 import { FaDollarSign, FaEnvelope, FaStar, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SingleRow = ({ toy, serial }) => {
-	const { toy_name, toy_image, seller_name, seller_email, sub_category, available_quantity, price, rating } = toy;
+	const { _id, toy_name, toy_image, seller_name, seller_email, sub_category, available_quantity, price, rating } = toy;
 	return (
 		<tr className='text-center h-12'>
 			<td>{serial}</td>
@@ -33,11 +34,16 @@ const SingleRow = ({ toy, serial }) => {
 				</div>
 			</td>
 			<td>{available_quantity}</td>
-			<th>
+			<td>
 				<div className='flex gap-2 justify-center items-center'>
 					<FaStar /> {rating}
 				</div>
-			</th>
+			</td>
+			<td>
+				<Link to={`../toys/${_id}`} className='btn btn-sm'>
+					view details
+				</Link>
+			</td>
 		</tr>
 	);
 };

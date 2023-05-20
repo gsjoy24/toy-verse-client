@@ -72,17 +72,21 @@ const MyToys = () => {
 		<div className='max-w-5xl mx-auto mb-12'>
 			<h1 className='text-2xl md:text-4xl font-extrabold my-14 text-center uppercase'>All toys added by you</h1>
 			<div className='overflow-x-auto w-full'>
-				<table className='table w-full'>
-					{/* head */}
-					<thead>{tableHeadings}</thead>
-					<tbody>
-						{toys.map((toy, serial) => (
-							<ToyRow key={toy._id} toy={toy} serial={serial + 1} handleDelete={handleDelete} />
-						))}
-					</tbody>
-					{/* foot */}
-					<tfoot>{tableHeadings}</tfoot>
-				</table>
+				{toys.length ? (
+					<table className='table w-full'>
+						{/* head */}
+						<thead>{tableHeadings}</thead>
+						<tbody>
+							{toys.map((toy, serial) => (
+								<ToyRow key={toy._id} toy={toy} serial={serial + 1} handleDelete={handleDelete} />
+							))}
+						</tbody>
+						{/* foot */}
+						<tfoot>{tableHeadings}</tfoot>
+					</table>
+				) : (
+					<h1 className='my-40 text-center text-3xl font-bold'>No data found!</h1>
+				)}
 			</div>
 		</div>
 	);

@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddAToy = () => {
 	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		// scroll to top of page andd set page title
@@ -67,6 +69,8 @@ const AddAToy = () => {
 						showConfirmButton: false,
 						timer: 2000
 					});
+					form.reset();
+					navigate('/my_toys')
 				} else {
 					Swal.fire({
 						icon: 'error',

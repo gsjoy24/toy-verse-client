@@ -61,7 +61,7 @@ const router = createBrowserRouter([
 						<UpdateToy />
 					</PrivateRoute>
 				),
-				loader: ({ params }) => fetch(`https://toy-verse-server-iota.vercel.app/toysT/${params.id}`)
+				loader: ({ params }) => fetch(`https://toy-verse-server-iota.vercel.app/toys/${params.id}`)
 			},
 			{
 				path: '/toys/:id',

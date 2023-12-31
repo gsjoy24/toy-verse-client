@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 const UpdateToy = () => {
 	const { _id, toy_name, toy_image, price, rating, sub_category, available_quantity, detail_description } =
 		useLoaderData();
+	const data = useLoaderData();
+	console.log(data);
 	const { user } = useContext(AuthContext);
 	const [err, setErr] = useState('');
 
